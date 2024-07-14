@@ -60,9 +60,17 @@ Setting the fan speed (FanMode) using eBUS is known to causes issues for multipl
 For me, this was caused by the Air Control panel sending continuous fan speed updates to the HRU, which will reset the speed to the value Air Control wants it to be. There are a couple of ways to address this problem:
 
 #### Disconnecting Air Control
-
 Disconnecting the Air Control panel from the eBUS will stop the update messages and allow you to set the fan speed. However, doing this will lose any functionality that Air Control provides, including demand based (CO2 sensor based) ventilation.
 
 #### Sending periodic updates
-
 Making Home Assitant or other automation software send periodic fan speed updates just like Air Control does. This seems to work for some people ([here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7#issuecomment-1336465329) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2#issuecomment-2135583648)).
+
+#### Combining RJ12 and eBUS
+In my case neither solution works.
+I can't disconnect Air Control, because I want to keep demand (CO2 sensor based) ventilation.
+
+When using demand ventilation, sending periodic updates won't work because the Air Control panel sends a [special command](https://github.com/christiaanderidder/brink-renovent-hru/blob/9aec5e7ed4ab0a13d1d2ccd2a620caf2364d0f61/ebusd/config/7c.Excellent400.csv#L32). This command resets the fan speed back to Auto when trying to override it using eBUS. This happens so quickly that even periodic updates every second are not enough to keep the fan speed.
+
+However, overriding the fan speed using the 3/4-way switch and RF remote do work because these directly override the HRU which then ignores the commands over eBUS.
+
+For this reason I had to use a combination of the RJ12 method (for overriding the fan speed) and eBUS (for all other information coming from the HRU).
