@@ -2,7 +2,7 @@
 This repository contains collection of information and configuration files needed for automating the Brink Renovent Excellent 400 heat recuperation unit (HRU / WTW)
 The technniques here will likely work for other Brink devices as well.
 
-** I am not resposible for any damage you might do to your device, nor will I provide any support besides the information given below **
+**I am not resposible for any damage you might do to your device, nor will I provide any support besides the information given below**
 
 The guide below was tested on the following devices, configured for [demand ventilation](https://www.brinkclimatesystems.nl/documenten/demand-controlled-ventilation-2-0-installation-instructions-gb-611586.pdf)
 - Brink Renovent Excellent 400 4/0 R
