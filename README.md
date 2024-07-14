@@ -4,7 +4,7 @@ The technniques here will likely work for other Brink devices as well.
 
 **I am not resposible for any damage you might do to your device, nor will I provide any support besides the information given below**
 
-The guide below was tested on the following devices, configured for [demand ventilation](https://www.brinkclimatesystems.nl/documenten/demand-controlled-ventilation-2-0-installation-instructions-gb-611586.pdf)
+The guide below was tested on the following devices, configured for [demand ventilation](manuals/demand-controlled-ventilation-installation-instructions.pdf)
 - Brink Renovent Excellent 400 4/0 R
 - Brink Zone Valve
 - 3 Brink CO2 sensors
@@ -14,7 +14,7 @@ Broadly speaking there are two protocols that are commonly used to automate the 
 - The RJ12 connector used for 3/4-way physical switches and RF switches
 - The eBUS connector used for more complex setups
 
-The [Brink Renovent Excellent installation guide](https://www.brinkclimatesystems.fr/wp-content/uploads/2014/11/Manuel-dinstallation-300-400.pdf) describes the wiring of these connections. Below I will focus on how to use them for automating your system.
+The [Brink Renovent Excellent installation guide](manuals/installation-manual-300-400.pdf) describes the wiring of these connections. Below I will focus on how to use them for automating your system.
 
 ## RJ12
 This is the simpler of the two, and allows for setting the fan mode to 0, 2 or 3 as well as indicating whether the filter needs to be replaced.
