@@ -30,15 +30,18 @@ I opted to using a board which combines most of the needed components (2 relays,
 
 ## eBUS
 The eBUS protocol is a little more complicted, but can easily be read and written to with the right tools. This protocol allows for automating almost any setting and sensor the HRU offers.
-To make this work you need a way to connect to the bus. In my cases I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board runs of a micro USB charger and can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
+To make this work you need a way to connect to the bus. In my cases I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
 
 This board does some of the low level parsing of the eBUS messages and exposes them over the network. 
 The board and a case can be ordered directly from Elecrow.
 - [Board](https://www.elecrow.com/ebus-adapter-shield-v5.html)
 - [Case](https://www.elecrow.com/enclosure-for-ebus-adapter-shield-v5.html)
 
+The [getting started](https://adapter.ebusd.eu/v5/steps.en.html) guide on the eBUSd adapter site provide step by step instructions on how to configure the board.
+
 ## Configuring eBUSd
-To parse the messages from eBUS and forward them to your home automation software, you will need to configure and run an instance of [eBUSd](https://ebusd.eu/).  I chose to run eBUSd in docker, using [the configuration](ebusd/docker-compose.yaml) in this repository.
+To parse the messages from eBUS and forward them to your home automation software, you will need to configure and run an instance of [eBUSd](https://ebusd.eu/).  I chose to run eBUSd in docker, using [the configuration](ebusd/docker-compose.yaml) in this repository. More information on how eBUSd configurations work can be found
+
 While eBUSd is an open standard, the messages sent are often proprietary. This means that specific message parsing configuration is needed for your device. The configuration provided in the [eBUSd configuration repo](https://github.com/john30/ebusd-configuration) only applies to heating systems and does not have any Brink HRUs listed.
 
 However, different people managed to reverse engineer the messages used by Brink, the following sources helped me a lot:
@@ -46,5 +49,7 @@ However, different people managed to reverse engineer the messages used by Brink
 - [tinus5](https://gathering.tweakers.net/forum/list_message/63666318#63666318) who provided the configuration for the Brink zone-valve and CO2 sensors
 
 Based on the above and [some of my own reverse engineering](https://github.com/pvyleta/ebusd-brink-hru/issues/5), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
+
+The eBUSd wiki gives more information on the eBUSd [message definition](https://github.com/john30/ebusd/wiki/4.1.-Message-definition) and [how to create](https://github.com/john30/ebusd/wiki/HowTos) configuration files.
 
 ## Known issues
