@@ -10,11 +10,13 @@ The guide below was tested on the following devices, configured for [demand vent
 - 3 Brink CO2 sensors
 - Brink Air Control
 
-Broadly speaking there are two protocols that are commonly used to automate the system:
+Broadly speaking there are two methods that are commonly used to automate the system:
 - The RJ12 connector used for 3/4-way physical switches and RF switches
 - The eBUS connector used for more complex setups
 
 The [Brink Renovent Excellent installation guide](manuals/installation-manual-300-400.pdf) describes the wiring of these connections. Below I will focus on how to use them for automating your system.
+
+You might be wondering which method you can use best. The answer is that *it depends*. For simple setups (filter indicator, fan speed) the RJ12 connector will be sufficient. If you are looking to automate all aspects of your HRU you will need the eBUS integration. In some cases (see [known issues](#known-issues)) you might need both.
 
 ## RJ12
 This is the simpler of the two, and allows for setting the fan mode to 0, 2 or 3 as well as indicating whether the filter needs to be replaced.
@@ -44,3 +46,5 @@ However, different people managed to reverse engineer the messages used by Brink
 - [tinus5](https://gathering.tweakers.net/forum/list_message/63666318#63666318) who provided the configuration for the Brink zone-valve and CO2 sensors
 
 Based on the above and [some of my own reverse engineering](https://github.com/pvyleta/ebusd-brink-hru/issues/5), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
+
+## Known issues
