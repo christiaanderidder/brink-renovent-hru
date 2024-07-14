@@ -39,7 +39,7 @@ The board and a case can be ordered directly from Elecrow.
 
 The [getting started](https://adapter.ebusd.eu/v5/steps.en.html) guide on the eBUSd adapter site provide step by step instructions on how to configure the board.
 
-## Configuring eBUSd
+## eBUSd
 To parse the messages from eBUS and forward them to your home automation software, you will need to configure and run an instance of [eBUSd](https://ebusd.eu/).  I chose to run eBUSd in docker, using [the configuration](ebusd/docker-compose.yaml) in this repository. More information on how eBUSd configurations work can be found
 
 While eBUSd is an open standard, the messages sent are often proprietary. This means that specific message parsing configuration is needed for your device. The configuration provided in the [eBUSd configuration repo](https://github.com/john30/ebusd-configuration) only applies to heating systems and does not have any Brink HRUs listed.
@@ -52,7 +52,12 @@ Based on the above, and some of my own reverse engineering ([here](https://githu
 
 The eBUSd wiki gives more information on the eBUSd [message definition](https://github.com/john30/ebusd/wiki/4.1.-Message-definition) and [how to create](https://github.com/john30/ebusd/wiki/HowTos) configuration files.
 
-## Known issues
+## Home Assistant
+If MQTT is correctly configured in home assistant all entities will automatically be picked up and can be used on dashboards accordingly. 
+
+After seeing the work people did for other HRU systems ([here](https://github.com/mweimerskirch/lovelace-comfoair) and [here](https://github.com/mweimerskirch/lovelace-hacomfoairmqtt)), I decided to create a custom card for to display the most important information in a single place: [Brink Renovent HRU card](https://github.com/christiaanderidder/lovelace-brink-renovent-hru-card/)
+
+## Known Issues
 
 ### Fan speed 
 Setting the fan speed (FanMode) using eBUS is known to causes issues for multiple people (e.g. [here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2)).
