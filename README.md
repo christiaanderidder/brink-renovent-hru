@@ -51,7 +51,7 @@ However, different people managed to reverse engineer the messages used by Brink
 - [pvyleta](https://github.com/pvyleta/ebusd-brink-hru) who decompiled the .NET-based Brink Service tool to extract the different eBUS messages
 - [tinus5](https://gathering.tweakers.net/forum/list_message/63666318#63666318) who provided the configuration for the Brink zone-valve and CO2 sensors
 
-Based on the above, and some of my own reverse engineering ([here](https://github.com/pvyleta/ebusd-brink-hru/issues/3) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/5)), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
+Based on the above, and some of my own reverse engineering ([here](https://github.com/pvyleta/ebusd-brink-hru/issues/3#issuecomment-2212419678) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/5#issuecomment-2221160210)), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
 
 The eBUSd wiki gives more information on the eBUSd [message definition](https://github.com/john30/ebusd/wiki/4.1.-Message-definition) and [how to create](https://github.com/john30/ebusd/wiki/HowTos) configuration files.
 
