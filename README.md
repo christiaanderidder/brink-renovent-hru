@@ -9,6 +9,9 @@ The guide below was tested on the following devices, configured for [demand vent
 - Brink Zone Valve
 - 3 Brink CO2 sensors
 - Brink Air Control
+- A RJ12 splitter
+  - RJ11 3-way switch
+  - RJ12 RF receiver and remote with 4 settings
 
 Broadly speaking there are two methods that are commonly used to automate the system:
 - The RJ12 connector used for 3/4-way physical switches and RF switches
