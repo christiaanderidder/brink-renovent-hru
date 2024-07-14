@@ -48,8 +48,21 @@ However, different people managed to reverse engineer the messages used by Brink
 - [pvyleta](https://github.com/pvyleta/ebusd-brink-hru) who decompiled the .NET-based Brink Service tool to extract the different eBUS messages
 - [tinus5](https://gathering.tweakers.net/forum/list_message/63666318#63666318) who provided the configuration for the Brink zone-valve and CO2 sensors
 
-Based on the above and [some of my own reverse engineering](https://github.com/pvyleta/ebusd-brink-hru/issues/5), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
+Based on the above, and some of my own reverse engineering ([here](https://github.com/pvyleta/ebusd-brink-hru/issues/3) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/5)), I created my own configuration files, which can be found under the [ebusd config folder](ebusd/config) in this repository.
 
 The eBUSd wiki gives more information on the eBUSd [message definition](https://github.com/john30/ebusd/wiki/4.1.-Message-definition) and [how to create](https://github.com/john30/ebusd/wiki/HowTos) configuration files.
 
 ## Known issues
+
+### Fan speed 
+Setting the fan speed (FanMode) using eBUS is known to causes issues for multiple people (e.g. [here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2)).
+
+For me, this was caused by the Air Control panel sending continuous fan speed updates to the HRU, which will reset the speed to the value Air Control wants it to be. There are a couple of ways to address this problem:
+
+#### Disconnecting Air Control
+
+Disconnecting the Air Control panel from the eBUS will stop the update messages and allow you to set the fan speed. However, doing this will lose any functionality that Air Control provides, including demand based (CO2 sensor based) ventilation.
+
+#### Sending periodic updates
+
+Making Home Assitant or other automation software send periodic fan speed updates just like Air Control does. This seems to work for some people ([here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7#issuecomment-1336465329) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2#issuecomment-2135583648)).
