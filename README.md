@@ -40,7 +40,7 @@ To parse the messages from eBUS and forward them to your home automation softwar
 While eBUSd is an open standard, the messages sent are often proprietary. This means that specific message parsing configuration is needed for your device. The configuration provided in the [eBUSd configuration repo](https://github.com/john30/ebusd-configuration) only applies to heating systems and does not have any Brink HRUs listed.
 
 However, different people managed to reverse engineer the messages used by Brink, the following sources helped me a lot:
-- [https://github.com/pvyleta/ebusd-brink-hru](pvyleta) who decompiled the .NET-based Brink Service tool to extract the different eBUS messages
-- [https://gathering.tweakers.net/forum/list_message/63666318#63666318](tinus5) who provided the configuration for the Brink zone-valve and CO2 sensors
+- [pvyleta](https://github.com/pvyleta/ebusd-brink-hru) who decompiled the .NET-based Brink Service tool to extract the different eBUS messages
+- [tinus5](https://gathering.tweakers.net/forum/list_message/63666318#63666318) who provided the configuration for the Brink zone-valve and CO2 sensors
 
 **This README will be updated with configuration files**
