@@ -1,0 +1,12 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field5,part (m/s),datatypes/templates,divider/values,unit,comment
+# Taken from https://gathering.tweakers.net/forum/list_message/63666318#63666318
+
+# BRINK CO2 Sensor
+# Three sensors each using a different circuit
+*r,CO2Sensor,,,,0a;0b;0d,4050
+*w,CO2Sensor,,,,0a;0b;0d,4050
+
+# UIR 1 has a fixed value: 260, 516 or 772
+# UIR 2 has a fixed value: 0
+# UIR 3 contains the CO2 level in PPM
+r,,CO2SensorLevel,CO2SensorValue,,,40a1,,,,UIR,,,,,,UIR,,,,,,UIR,,ppm,Value

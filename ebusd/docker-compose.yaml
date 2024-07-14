@@ -1,0 +1,27 @@
+services:
+  ebusd:
+    # For all configuration options, see: https://github.com/john30/ebusd/blob/master/contrib/docker/docker-compose.example.yaml
+    container_name: ebusd
+    image: john30/ebusd
+    restart: unless-stopped
+    ports:
+      - 8888:8888
+    volumes:
+      # Make sure to configure the correct local path for your docker mount here
+      - ./config:/etc/ebusd/configs
+    environment:
+      # Make sure to set the correct IP for your eBUSd Adapter Shield here
+      EBUSD_DEVICE: "ens:10.0.20.13:9999"
+      
+      # Load custom eBUS message config from docker volume
+      EBUSD_CONFIGPATH: "/etc/ebusd/configs"
+      EBUSD_SCANCONFIG: ""
+
+      # Make sure to set the correect MQTT hostname here
+      EBUSD_MQTTHOST: "mosquitto"
+      EBUSD_MQTTPORT: 1883
+      EBUSD_MQTTCLIENTID: "ebusd"
+      EBUSD_MQTTJSON: ""
+      
+      # Load custom MQTT config from docker volume
+      EBUSD_MQTTINT: "/etc/ebusd/configs/mqtt-hassio.cfg"

@@ -1,0 +1,34 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field5,part (m/s),datatypes/templates,divider/values,unit,comment,field6,part (m/s),datatypes/templates,divider/values,unit,comment
+# Taken from https://gathering.tweakers.net/forum/list_message/63666318#63666318
+
+# BRINK zone valve
+*r,ZoneValve,,,,09,4050,
+*w,ZoneValve,,,,09,4050,
+
+# Observed values:
+# 0x00 04 00 00 00 00 00 Combined (living / sleeping) zone
+# 0x00 04 00 00 01 03 00 Living zone
+# 0x00 04 00 00 02 02 00 Sleeping zone
+
+# 0x00 03 00 00 00 00 01 Valve moving from combined zone to any other zone
+# 0x00 03 00 00 01 03 01 Valve moving from living zone to any other zone
+# 0x00 03 00 00 02 02 01 Valve moving to from sleeping zone to any other zone
+
+# Valve config according to Brink Air Control panel:
+#  _________
+# 1 __   __ 3
+#     | |
+#     |2|
+#
+# 1 Air supply (0)
+# 2 Living zone (1)
+# 3 Sleeping zone (2)
+
+# Reverse engineered values:
+#   0x00 04 00 00 01 03 00 Living zone
+# state -^
+# zone no --------^
+# valve pos? --------^
+
+# The mapping between valve positon and zone no depends on how the valve is mounted and configured.
+r,,ValvePosition,ValvePosition,,,40a1,,,,IGN:1,,,Always 00,State,,UCH,3=Moving;4=In position,,,,,IGN:2,,,Always 0000,Zone,,UCH,0=Both zones;1=Living zone;2=Sleeping zone,,,Position,,UCH,,,,,,IGN:1
