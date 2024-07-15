@@ -1,5 +1,5 @@
 # Brink Renovent Excellent Home Automation
-This repository contains collection of information and configuration files needed for automating the Brink Renovent Excellent 400 heat recuperation unit (HRU / WTW)
+This repository contains collection of information and configuration files needed for automating the Brink Renovent Excellent 400 heat recuperation unit (HRU / WTW).
 The technniques here will likely work for other Brink devices as well.
 
 **I am not resposible for any damage you might do to your device, nor will I provide any support besides the information given below**
@@ -14,14 +14,15 @@ The guide below was tested on the following devices, configured for [demand vent
   - RJ12 RF receiver and remote with 4 settings
 
 Broadly speaking there are two methods that are commonly used to automate the system:
-- The RJ12 connector used for 3/4-way physical switches and RF switches
-- The eBUS connector used for more complex setups
+- The X1 (RJ12) connector used for 3/4-way physical switches and RF switches
+- The X2 connector used for eBUS or OpenTherm communication
 
 The [Brink Renovent Excellent installation guide](manuals/installation-manual-300-400.pdf) describes the wiring of these connections. Below I will focus on how to use them for automating your system.
 
-You might be wondering which method you can use best. The answer is that *it depends*. For simple setups (filter indicator, fan speed) the RJ12 connector will be sufficient. If you are looking to automate all aspects of your HRU you will need the eBUS integration. In some cases (see [known issues](#known-issues)) you might need both.
+You might be wondering which method you can use best. The answer is that *it depends*. For simple setups (filter indicator, fan speed) the X1 (RJ12) connector will be sufficient. If you are looking to automate all aspects of your HRU you will need an eBUS or OpenTherm integration.
+In some cases (see [known issues](#known-issues)) you might need both.
 
-## RJ12
+## X1 (RJ12)
 This is the simpler of the two, and allows for setting the fan mode to 0, 2 or 3 as well as indicating whether the filter needs to be replaced.
 There are different sources describing how this can be wired up with a (smart) relay:
 - [Dutch Tweakers forum (nl)](https://gathering.tweakers.net/forum/list_messages/1979992)
@@ -31,7 +32,13 @@ I opted to using a board which combines most of the needed components (2 relays,
 
 **This README will be updated with wiring diagrams and configuration files once I have this up and running**
 
-## eBUS
+## X2 (eBUS or OpenTherm)
+The X2 connector can be used for either the eBUS or OpenTherm protocols. Which protocol you want to used is determined by a setting (08) on the HRU.
+
+### OpenTherm
+While there are some efforts to control the device using OpenTherm ([here](https://github.com/raf1000/brink_openhab) and [here](https://github.com/tijsverkoyen/Home-Assistant-BrinkRenoventHR)), this seems to be a bit of a dead end when the HRU system has other brink products (e.g. Zone Valve, Air Control, Brink Home eModule) which all rely on eBUS. Therefore this guide will focus only on the eBUS based integration.
+
+### eBUS
 The eBUS protocol is a little more complicted, but can easily be read and written to with the right tools. This protocol allows for automating almost any setting and sensor the HRU offers.
 To make this work you need a way to connect to the bus. In my cases I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
 
@@ -42,7 +49,12 @@ The board and a case can be ordered directly from Elecrow.
 
 The [getting started](https://adapter.ebusd.eu/v5/steps.en.html) guide on the eBUSd adapter site provide step by step instructions on how to configure the board.
 
-## eBUSd
+
+### Brink Home eModule
+The easiest way to interact with the Brink HRU over eBUS would be to install a Brink Home eModule. This device connects the Brink HRU to a cloud-based service allowing you to control your device. A Home Assistant [integration](https://github.com/samuolis/brink) exists, but requires cloud connectivity.
+In this guide we will focus on a fully local solution that does not require internet connectivity, therefore the Brink Home eModule will not be regarded.
+
+### eBUSd
 To parse the messages from eBUS and forward them to your home automation software, you will need to configure and run an instance of [eBUSd](https://ebusd.eu/).  I chose to run eBUSd in docker, using [the configuration](ebusd/docker-compose.yaml) in this repository. More information on how eBUSd configurations work can be found
 
 While eBUSd is an open standard, the messages sent are often proprietary. This means that specific message parsing configuration is needed for your device. The configuration provided in the [eBUSd configuration repo](https://github.com/john30/ebusd-configuration) only applies to heating systems and does not have any Brink HRUs listed.
