@@ -74,7 +74,7 @@ After seeing the work people did for other HRU systems ([here](https://github.co
 ## Known Issues
 
 ### Fan speed 
-Setting the fan speed (FanMode) using eBUS is known to causes issues for multiple people (e.g. [here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2)).
+Setting the fan speed (FanMode) using eBUS is known to cause issues for multiple people (e.g. [here](https://github.com/dstrigl/ebusd-config-brink-renovent-excellent-300/issues/7) and [here](https://github.com/pvyleta/ebusd-brink-hru/issues/2)).
 
 For me, this was caused by the Air Control panel sending continuous fan speed updates to the HRU, which will reset the speed to the value Air Control wants it to be. There are a couple of ways to address this problem:
 
