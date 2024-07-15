@@ -35,11 +35,15 @@ I opted to using a board which combines most of the needed components (2 relays,
 ## X2 (eBUS or OpenTherm)
 The X2 connector can be used for either the eBUS or OpenTherm protocols. Which protocol you want to used is determined by a setting (08) on the HRU.
 
+### Brink Home eModule
+The easiest way to interact with the Brink HRU over eBUS would be to install a Brink Home eModule. This device connects the Brink HRU to a cloud-based service allowing you to control your device. A Home Assistant [integration](https://github.com/samuolis/brink) exists, but requires cloud connectivity.
+In this guide we will focus on a fully local solution that does not require internet connectivity, therefore the Brink Home eModule will not be regarded.
+
 ### OpenTherm
 While there are some efforts to control the device using OpenTherm ([here](https://github.com/raf1000/brink_openhab) and [here](https://github.com/tijsverkoyen/Home-Assistant-BrinkRenoventHR)), this seems to be a bit of a dead end when the HRU system has other brink products (e.g. Zone Valve, Air Control, Brink Home eModule) which all rely on eBUS. Therefore this guide will focus only on the eBUS based integration.
 
-### eBUS
-The eBUS protocol is a little more complicted, but can easily be read and written to with the right tools. This protocol allows for automating almost any setting and sensor the HRU offers.
+### Custom eBUS integration
+The eBUS protocol is a little more complicated, but can easily be read and written to with the right tools. This protocol allows for automating almost any setting and sensor the HRU offers.
 To make this work you need a way to connect to the bus. In my cases I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
 
 This board does some of the low level parsing of the eBUS messages and exposes them over the network. 
@@ -48,11 +52,6 @@ The board and a case can be ordered directly from Elecrow.
 - [Case](https://www.elecrow.com/enclosure-for-ebus-adapter-shield-v5.html)
 
 The [getting started](https://adapter.ebusd.eu/v5/steps.en.html) guide on the eBUSd adapter site provide step by step instructions on how to configure the board.
-
-
-### Brink Home eModule
-The easiest way to interact with the Brink HRU over eBUS would be to install a Brink Home eModule. This device connects the Brink HRU to a cloud-based service allowing you to control your device. A Home Assistant [integration](https://github.com/samuolis/brink) exists, but requires cloud connectivity.
-In this guide we will focus on a fully local solution that does not require internet connectivity, therefore the Brink Home eModule will not be regarded.
 
 ### eBUSd
 To parse the messages from eBUS and forward them to your home automation software, you will need to configure and run an instance of [eBUSd](https://ebusd.eu/).  I chose to run eBUSd in docker, using [the configuration](ebusd/docker-compose.yaml) in this repository. More information on how eBUSd configurations work can be found
