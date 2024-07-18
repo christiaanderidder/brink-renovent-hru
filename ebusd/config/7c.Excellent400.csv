@@ -69,6 +69,9 @@ r,,HumidityBoostState,HumidityBoostState,,,4022,21,,,UIR,0=Error;1=NotInitialize
 r,,ActualInletPressure,PressureInlet,,,4022,14,,,UIR,10,Pa,
 r,,ActualExhaustPressure,PressureExhaust,,,4022,15,,,UIR,10,Pa,
 r,,EBusSyncGenErrors,EBusSyncGenErrorCount,,,4022,64,,,UIR,,,
+
+# These messages don't seem to be used by the Renovent Excellent 400 in demand mode
+# See 0a.CO2Sensor.csv on how to read CO2 sensor data
 #r,,CO2Sensor1Status,CO2Sensor1Status,,,4022,28,,,UIR,0=Error;1=NotInitialized;2=Idle;3=WarmingUp;4=Running;5=Calibrating;6=SelfTest,,
 #r,,CO2Sensor1Level,CO2Sensor1Value,,,4022,29,,,UIR,,ppm,
 #r,,CO2Sensor2Status,CO2Sensor2Status,,,4022,2a,,,UIR,0=Error;1=NotInitialized;2=Idle;3=WarmingUp;4=Running;5=Calibrating;6=SelfTest,,
