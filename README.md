@@ -40,9 +40,7 @@ This board does not come with any detailed instructions, but they are pretty str
 6. Connect power to the board and make sure ESPHome starts and can be reached on the configured IP.
 7. Connect the board to the RJ12 connector as show in the diagram below.
 
-![relay-schematic](https://github.com/user-attachments/assets/9feee3e0-4223-4b85-9936-f51c4b8538ad)
-
-**This README will be updated with wiring diagrams and configuration files once I have this up and running**
+![relay-schematic](https://github.com/user-attachments/assets/c2d320b7-57b2-4e48-a281-bc0216596a2b)
 
 ## X2 (eBUS or OpenTherm)
 The X2 connector can be used for either the eBUS or OpenTherm protocols. Which protocol you want to used is determined by a setting (08) on the HRU.
