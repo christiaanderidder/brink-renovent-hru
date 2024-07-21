@@ -39,8 +39,11 @@ This board does not come with any detailed instructions, but they are pretty str
 5. Use two of the included jumpers to connect RY1 to IO5 and RY2 to IO4 (marked red in the wiring schematic below)
 6. Connect power to the board and make sure ESPHome starts and can be reached on the configured IP.
 7. Connect the board to the RJ12 connector as show in the diagram below.
+8. Connect the RJ12 connector to the Renovent HRU and ensure the board can be reached on the configured IP.
 
 ![relay-schematic](https://github.com/user-attachments/assets/c2d320b7-57b2-4e48-a281-bc0216596a2b)
+
+The device can now be added in Home Assistant or other home automation software.
 
 ## X2 (eBUS or OpenTherm)
 The X2 connector can be used for either the eBUS or OpenTherm protocols. Which protocol you want to used is determined by a setting (08) on the HRU.
