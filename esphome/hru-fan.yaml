@@ -71,7 +71,7 @@ select:
     platform: template
     initial_option: "Auto"
     optimistic: true
-    icon: mdi:fa
+    icon: mdi:fan
     options:
       - "Auto"
       - "Normal"
