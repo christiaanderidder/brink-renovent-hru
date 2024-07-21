@@ -28,7 +28,7 @@ There are different sources describing how this can be wired up with a (smart) r
 - [Dutch Tweakers forum (nl)](https://gathering.tweakers.net/forum/list_messages/1979992)
 - [Lets control it forum (en)](https://www.letscontrolit.com/forum/viewtopic.php?t=5702#p49500)
 
-I opted to using a board which combines most of the needed components (2 relays, a voltage regulator and an ESP12F) in [a single board](https://templates.blakadder.com/ESP12F_Relay_X2.html)
+I opted to using a board which combines most of the needed components (2 relays, a voltage regulator and an ESP12F) in [a single board](https://devices.esphome.io/devices/ESP-12F-Relay-X2)
 
 **This README will be updated with wiring diagrams and configuration files once I have this up and running**
 
