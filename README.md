@@ -57,7 +57,7 @@ While there are some efforts to control the device using OpenTherm ([here](https
 
 ### Custom eBUS integration
 The eBUS protocol is a little more complicated, but can easily be read and written to with the right tools. This protocol allows for automating almost any setting and sensor the HRU offers.
-To make this work you need a way to connect to the bus. In my cases I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
+To make this work you need a way to connect to the bus. I got myself an [eBUS Adapter Shield](https://adapter.ebusd.eu/v5/index.en.html). This board can easily be connected directly to the HRU's eBUS connector, or by wiring it in parallel to something that's already plugged into it.
 
 This board does some of the low level parsing of the eBUS messages and exposes them over the network. 
 The board and a case can be ordered directly from Elecrow.
