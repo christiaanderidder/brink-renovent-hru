@@ -32,11 +32,11 @@ I opted to using a board which combines most of the needed components (2 relays,
 
 This board does not come with any detailed instructions, but they are pretty straightforward:
 1. Solder the included header pins into the through-holes
-2. Use one of the included jumpers to connect IO0 and GND (marked blue in wiring schematic below)
+2. Use one of the included jumpers to connect `IO0` and `GND` (marked blue in wiring schematic below)
 3. Download the ESPHome configuration file in the [esphome](esphome) folder of this repository, adjust the settings (especially IP) according to your home setup.
 3. Connect a development board to TXD, RXD, GND and 5V and flash ESPHome using the configuration file
-4. Cut the power to the board, remove the jumper between IO2 and GND
-5. Use two of the included jumpers to connect RY1 to IO5 and RY2 to IO4 (marked red in the wiring schematic below)
+4. Cut the power to the board, remove the jumper between `IO0` and `GND`
+5. Use two of the included jumpers to connect `RY1` to `IO5` and `RY2` to `IO4` (marked red in the wiring schematic below)
 6. Connect power to the board and make sure ESPHome starts and can be reached on the configured IP.
 7. Connect the board to the RJ12 connector as show in the diagram below.
 8. Connect the RJ12 connector to the Renovent HRU and ensure the board can be reached on the configured IP.
