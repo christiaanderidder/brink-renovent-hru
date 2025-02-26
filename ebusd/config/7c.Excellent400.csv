@@ -32,7 +32,7 @@ w,,FanModeDemandClock,FanModeDemandClock,,,40a3,01,,,UCH,0=Holiday;1=Reduced;2=N
 # When FanModeDemandCO2 is written to the FanMode sensor will switch to Auto.
 # Note: We can ignore the first two bytes they are always 00 00
 # Note: As opposed to the other fan mode this value is numeric (m³/h)
-w,,FanModeDemandCO2,FanModeDemandCO2,,,40a3,02,,,IGN:2,,,,,,UCH,
+w,,FanModeDemandCO2,FanModeDemandCO2,,,40a3,02,,,IGN:2,,,,,,UCH,,m³/h
 
 r,,FilterMaximumFlow,FilterNotificationFlow,,,4050,1c,,,UIR,-1000,m³,,min,,UIR,-1000,m³,,max,,UIR,-1000,m³,,step,,UIR,-1000,m³,,default,,UIR,-1000,m³,
 r,,FilterUsageDays,TotalFilterDays,,,4050,22,,,UIR,,Days,,min,,UIR,,Days,,max,,UIR,,Days,,step,,UIR,,Days,,default,,UIR,,Days,
