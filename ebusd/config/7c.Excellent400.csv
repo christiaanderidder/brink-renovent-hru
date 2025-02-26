@@ -11,25 +11,28 @@ w,,ResetNotifications,ResetNotifications,,,4091,,,,UIR,0x0001=Errors;0x0100=Filt
 r,,ErrorHistory,RequestErrorList,,,4090,,,,HEX:18,,,
 
 # See: https://github.com/pvyleta/ebusd-brink-hru/issues/5
-# In "Standard" ventilation mode FanModeStandard is set to Air Control value every ~30s
-# In "Demand Clock" ventilation mode FanModeStandard is set to 0xffffffffff every ~30s
-# In "Demand CO2" ventilation mode FanModeStandard is set to 0xffffffffff every ~30s
+# In "Standard" ventilation mode the value is set to Air Control value and broadcasted every ~30s
+# In "Demand Clock" ventilation mode the value is set to 0xffffffffff and broadcasted every ~30s
+# In "Demand CO2" ventilation mode the value is set to 0xffffffffff and broadcasted every ~30s
 # Note: 0xff is seen as a NULL value on ebus and can't be read using the config below. It will be reported as '-'
 # Note: Use a different name for this field and the read from 0x402201 otherwise home assistant keeps setting the sensor to unknown due to the '-' value
 # See: https://github.com/john30/ebusd/issues/1061#issuecomment-1891011267
 w,,FanModeStandard,FanModeStandard,,,40a1,,,,ULR,0x00000000=Holiday;0x00010001=Reduced;0x00020002=Normal;0x00030003=High;,
 
-# In "Standard" ventilation mode FanModeDemand is set to Air Control value when making manual changes
-# In "Demand Clock" ventilation mode FanModeDemand is set to Air Control value to every ~30s
-# In "Demand CO2" ventilation mode FanModeDemand is set to Air Control value to every ~30s
+# How this value is set depends on the fan mode:
+# In "Standard" ventilation mode the value is only broadcasted when manual changes is made in Air Control.
+# In "Demand CO2" ventilation mode the value is only used when manual overrides for manual overrides and broadcasted every ~30s.
+# In "Demand Clock" ventilation mode the value is set according to the Air Control time schedule or manual override and broadcasted every ~30s.
 # Note: It's not clear what the value of the last two bytes represent. Ignore them for now
-w,,FanModeDemand,FanModeDemand,,,40a3,01,,,UCH,0=Holiday;1=Reduced;2=Normal;3=High;4=Auto,,,,,IGN:2
+w,,FanModeDemandClock,FanModeDemandClock,,,40a3,01,,,UCH,0=Holiday;1=Reduced;2=Normal;3=High;4=Auto,,,,,IGN:2
 
-# In "Standard" ventilation mode FanModeDemandAuto is not set
-# In "Demand Clock" ventilation FanModeDemandAuto is not set
-# In "Demand CO2" ventilation mode FanModeDemandAuto is set to 0x000064 every ~30s. (Makes 0x4022 switch to Auto)
+# In "Standard" ventilation mode the value is not set
+# In "Demand Clock" ventilation the value is not set
+# In "Demand CO2" ventilation mode value is set based on CO2 mesaurements and is broadcasted every ~30s.
+# When FanModeDemandCO2 is written to the FanMode sensor will switch to Auto.
 # Note: We can ignore the first two bytes they are always 00 00
-w,,FanModeDemandAuto,FanModeDemandAuto,,,40a3,02,,,IGN:2,,,,,,UCH,0x64=Auto
+# Note: As opposed to the other fan mode this value is numeric (m³/h)
+w,,FanModeDemandCO2,FanModeDemandCO2,,,40a3,02,,,IGN:2,,,,,,UCH,
 
 r,,FilterMaximumFlow,FilterNotificationFlow,,,4050,1c,,,UIR,-1000,m³,,min,,UIR,-1000,m³,,max,,UIR,-1000,m³,,step,,UIR,-1000,m³,,default,,UIR,-1000,m³,
 r,,FilterUsageDays,TotalFilterDays,,,4050,22,,,UIR,,Days,,min,,UIR,,Days,,max,,UIR,,Days,,step,,UIR,,Days,,default,,UIR,,Days,
