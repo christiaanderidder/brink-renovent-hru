@@ -28,7 +28,7 @@
 #   0x00 04 00 00 01 03 00 Living zone
 # state -^
 # zone no --------^
-# valve pos? --------^
+# valve pos ---------^
 
 # The mapping between valve positon and zone no depends on how the valve is mounted and configured.
 r,,ValvePosition,ValvePosition,,,40a1,,,,IGN:1,,,Always 00,State,,UCH,3=Moving;4=In position,,,,,IGN:2,,,Always 0000,Zone,,UCH,0=Both zones;1=Living zone;2=Sleeping zone,,,Position,,UCH,,,,,,IGN:1
