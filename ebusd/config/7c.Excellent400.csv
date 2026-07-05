@@ -35,9 +35,9 @@ w,,FanModeDemandClock,FanModeDemandClock,,,40a3,01,,,UCH,0=Holiday;1=Reduced;2=N
 w,,FanModeDemandCO2,FanModeDemandCO2,,,40a3,02,,,IGN:2,,,,,,UCH,,m³/h
 
 r,,FilterMaximumFlow,FilterNotificationFlow,,,4050,1c,,,UIR,-1000,m³,,min,,UIR,-1000,m³,,max,,UIR,-1000,m³,,step,,UIR,-1000,m³,,default,,UIR,-1000,m³,
-r,,FilterUsageDays,TotalFilterDays,,,4050,22,,,UIR,,Days,,min,,UIR,,Days,,max,,UIR,,Days,,step,,UIR,,Days,,default,,UIR,,Days,
+r,,FilterUsageDays,TotalFilterDays,,,4050,22,,,UIR,,d,,min,,UIR,,d,,max,,UIR,,d,,step,,UIR,,d,,default,,UIR,,d,
 r,,FilterUsage,TotalFilterFlow,,,4050,23,,,UIR,-1000,m³,,min,,UIR,-1000,m³,,max,,UIR,-1000,m³,,step,,UIR,-1000,m³,,default,,UIR,-1000,m³,
-r,,OperatingTime,TotalOperatingHours,,,4050,24,,,UIR,-5,Hours,,min,,UIR,-5,Hours,,max,,UIR,-5,Hours,,step,,UIR,-5,Hours,,default,,UIR,-5,Hours,
+r,,OperatingTime,TotalOperatingHours,,,4050,24,,,UIR,-5,h,,min,,UIR,-5,h,,max,,UIR,-5,h,,step,,UIR,-5,h,,default,,UIR,-5,h,
 r,,TotalFlow,TotalFlow,,,4050,25,,,UIR,-1000,m³,,min,,UIR,-1000,m³,,max,,UIR,-1000,m³,,step,,UIR,-1000,m³,,default,,UIR,-1000,m³,
 
 ## Curent state and sensors ##
